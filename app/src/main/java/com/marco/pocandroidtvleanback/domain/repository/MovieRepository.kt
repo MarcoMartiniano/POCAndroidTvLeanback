@@ -7,11 +7,8 @@ import com.marco.pocandroidtvleanback.domain.model.movies.Upcoming
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
-//    fun getMovieCast(): Flow<Int>
-//    fun getMovieDetails(): Flow<Int>
-
     fun getNowPlayingMovies(): Flow<NowPlaying>
-//    fun getPopularMovies(): Flow<Popular>
-//    fun getTopRatedMovies(): Flow<TopRated>
-//    fun getUpcomingMovies(): Flow<Upcoming>
+    fun getPopularMovies(): Flow<Popular>
+    fun getTopRatedMovies(): Flow<TopRated>
+    fun getUpcomingMovies(): Flow<Upcoming>
 }

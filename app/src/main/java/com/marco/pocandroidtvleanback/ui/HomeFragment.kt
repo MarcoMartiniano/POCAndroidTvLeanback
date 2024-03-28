@@ -65,10 +65,100 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+
+        viewModel.getPopularMoviesViewState.observeLiveData(owner, false) {
+            when {
+                it.isSuccess() -> {
+                    Log.d("TESTE", "SUCESS $it")
+                    Log.d("TESTE", "SUCESS ${it.data}")
+                }
+
+                it.isError() -> {
+                    when (it.error) {
+                        is InvalidApiKeyException -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "Please add A valid ApiKey",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "Generic error.",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+                }
+            }
+        }
+
+        viewModel.getTopRatedMoviesViewState.observeLiveData(owner, false) {
+            when {
+                it.isSuccess() -> {
+                    Log.d("TESTE", "SUCESS $it")
+                    Log.d("TESTE", "SUCESS ${it.data}")
+                }
+
+                it.isError() -> {
+                    when (it.error) {
+                        is InvalidApiKeyException -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "Please add A valid ApiKey",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "Generic error.",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+                }
+            }
+        }
+
+        viewModel.getUpcomingMoviesViewState.observeLiveData(owner, false) {
+            when {
+                it.isSuccess() -> {
+                    Log.d("TESTE", "SUCESS $it")
+                    Log.d("TESTE", "SUCESS ${it.data}")
+                }
+
+                it.isError() -> {
+                    when (it.error) {
+                        is InvalidApiKeyException -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "Please add A valid ApiKey",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "Generic error.",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun init() {
-        viewModel.getNowPlayingMovies()
+        // viewModel.getNowPlayingMovies()
+        // viewModel.getPopularMovies()
+        //viewModel.getTopRatedMovies()
+        viewModel.getUpcomingMovies()
 
 
 //        listFragment = ListFragment()
