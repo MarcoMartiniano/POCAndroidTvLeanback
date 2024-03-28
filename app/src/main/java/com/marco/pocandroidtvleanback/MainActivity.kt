@@ -39,10 +39,12 @@ class MainActivity : FragmentActivity(), View.OnKeyListener, View.OnClickListene
         fragmentContainer = binding.container
 
         buttonsSetOnKeyListener()
-        lastSelectedMenu = binding.btnHome
+        //lastSelectedMenu = binding.btnHome
+        lastSelectedMenu = binding.btnSearch
         lastSelectedMenu.isActivated = true
 
-        changeFragment(HomeFragment())
+        //changeFragment(HomeFragment())
+        changeFragment(SearchFragment())
         switchToLastSelectedMenu()
     }
 

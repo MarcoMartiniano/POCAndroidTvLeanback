@@ -34,14 +34,14 @@ class ItemPresenter : Presenter() {
 
     override fun onBindViewHolder(viewHolder: ViewHolder?, item: Any?) {
 
-        val content = item as? DataModel.Result.Detail
-
-        val imageview = viewHolder?.view?.findViewById<ImageView>(R.id.poster_image)
-
-        val url = "https://www.themoviedb.org/t/p/w500" + content?.poster_path
-        Glide.with(viewHolder?.view?.context!!)
-            .load(url)
-            .into(imageview!!)
+//        val content = item as? DataModel.Result.Detail
+//
+//        val imageview = viewHolder?.view?.findViewById<ImageView>(R.id.poster_image)
+//
+//        val url = "https://www.themoviedb.org/t/p/w500" + content?.poster_path
+//        Glide.with(viewHolder?.view?.context!!)
+//            .load(url)
+//            .into(imageview!!)
 
     }
 

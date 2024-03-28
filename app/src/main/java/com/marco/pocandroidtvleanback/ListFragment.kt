@@ -16,7 +16,7 @@ import androidx.leanback.widget.RowPresenter
 
 class ListFragment : RowsSupportFragment() {
 
-    private var itemSelectedListener: ((DataModel.Result.Detail) -> Unit)? = null
+    // private var itemSelectedListener: ((DataModel.Result.Detail) -> Unit)? = null
     private var rootAdapter: ArrayObjectAdapter =
         ArrayObjectAdapter(ListRowPresenter(FocusHighlight.ZOOM_FACTOR_MEDIUM))
 
@@ -28,37 +28,37 @@ class ListFragment : RowsSupportFragment() {
         onItemViewSelectedListener = ItemViewSelectedListener()
     }
 
-    fun bindData(dataList: DataModel) {
+//    fun bindData(dataList: DataModel) {
+//
+//        dataList.result.forEachIndexed { _, result ->
+//            val arrayObjectAdapter = ArrayObjectAdapter(ItemPresenter())
+//
+//            result.details.forEach {
+//                arrayObjectAdapter.add(it)
+//            }
+//
+//            val headerItem = HeaderItem(result.title)
+//            val listRow = ListRow(headerItem, arrayObjectAdapter)
+//            rootAdapter.add(listRow)
+//
+//        }
+//
+//    }
+//
+//    fun setOnContentSelectedListener(listener : (DataModel.Result.Detail) -> Unit){
+//        this.itemSelectedListener = listener
+//    }
 
-        dataList.result.forEachIndexed { _, result ->
-            val arrayObjectAdapter = ArrayObjectAdapter(ItemPresenter())
-
-            result.details.forEach {
-                arrayObjectAdapter.add(it)
-            }
-
-            val headerItem = HeaderItem(result.title)
-            val listRow = ListRow(headerItem, arrayObjectAdapter)
-            rootAdapter.add(listRow)
-
-        }
-
-    }
-
-    fun setOnContentSelectedListener(listener : (DataModel.Result.Detail) -> Unit){
-        this.itemSelectedListener = listener
-    }
-
-    inner class ItemViewSelectedListener : OnItemViewSelectedListener{
+    inner class ItemViewSelectedListener : OnItemViewSelectedListener {
         override fun onItemSelected(
             itemViewHolder: Presenter.ViewHolder?,
             item: Any?,
             rowViewHolder: RowPresenter.ViewHolder?,
-            row: Row?
+            row: Row?,
         ) {
-            if (item is DataModel.Result.Detail){
-                itemSelectedListener?.invoke(item)
-            }
+//            if (item is DataModel.Result.Detail){
+//                itemSelectedListener?.invoke(item)
+//            }
 
         }
     }
