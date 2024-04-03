@@ -1,34 +1,28 @@
 package com.marco.pocandroidtvleanback.data_remote.datasource
 
 import com.marco.pocandroidtvleanback.data.repository.IMovieDataSource
-import com.marco.pocandroidtvleanback.data_remote.mappers.toNowPlaying
-import com.marco.pocandroidtvleanback.data_remote.mappers.toPopular
-import com.marco.pocandroidtvleanback.data_remote.mappers.toTopRated
-import com.marco.pocandroidtvleanback.data_remote.mappers.toUpcoming
 import com.marco.pocandroidtvleanback.data_remote.service.MovieService
 import com.marco.pocandroidtvleanback.data_remote.utils.requestWrapper
-import com.marco.pocandroidtvleanback.domain.model.movies.NowPlaying
-import com.marco.pocandroidtvleanback.domain.model.movies.Popular
-import com.marco.pocandroidtvleanback.domain.model.movies.TopRated
-import com.marco.pocandroidtvleanback.domain.model.movies.Upcoming
+import com.marco.pocandroidtvleanback.domain.model.movies.Movies
+import com.marco.pocandroidtvleanback.data_remote.mappers.toMovies
 
 class MovieDataSourceImpl(
     private val service: MovieService,
 ) : IMovieDataSource {
-    override suspend fun getNowPlayingMovies(): NowPlaying = requestWrapper {
+    override suspend fun getNowPlayingMovies(): Movies = requestWrapper {
         service.getNowPlayingMovies()
-    }.toNowPlaying()
+    }.toMovies()
 
-    override suspend fun getPopularMovies(): Popular = requestWrapper {
+    override suspend fun getPopularMovies(): Movies = requestWrapper {
         service.getPopularMovies()
-    }.toPopular()
+    }.toMovies()
 
-    override suspend fun getTopRatedMovies(): TopRated = requestWrapper {
+    override suspend fun getTopRatedMovies(): Movies = requestWrapper {
         service.getTopRatedMovies()
-    }.toTopRated()
+    }.toMovies()
 
-    override suspend fun getUpcomingMovies(): Upcoming = requestWrapper {
+    override suspend fun getUpcomingMovies(): Movies = requestWrapper {
         service.getUpcomingMovies()
-    }.toUpcoming()
+    }.toMovies()
 
 }

@@ -28,7 +28,7 @@ class MainActivity : FragmentActivity(), View.OnKeyListener, View.OnClickListene
     private lateinit var fragmentContainer: FrameLayout
 
     private var isSideMenuEnabled = false
-    private var selectedMenu = Constants.MENU_HOME
+    private var selectedMenu = Constants.Menu.MENU_HOME
     private lateinit var lastSelectedMenu: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,12 +39,12 @@ class MainActivity : FragmentActivity(), View.OnKeyListener, View.OnClickListene
         fragmentContainer = binding.container
 
         buttonsSetOnKeyListener()
-        //lastSelectedMenu = binding.btnHome
-        lastSelectedMenu = binding.btnSearch
+        lastSelectedMenu = binding.btnHome
+//        lastSelectedMenu = binding.btnSearch
         lastSelectedMenu.isActivated = true
 
-        //changeFragment(HomeFragment())
-        changeFragment(SearchFragment())
+        changeFragment(HomeFragment())
+//        changeFragment(SearchFragment())
         switchToLastSelectedMenu()
     }
 
@@ -115,42 +115,42 @@ class MainActivity : FragmentActivity(), View.OnKeyListener, View.OnClickListene
 
         when (view.id) {
             R.id.btn_search -> {
-                selectedMenu = Constants.MENU_SEARCH
+                selectedMenu = Constants.Menu.MENU_SEARCH
                 changeFragment(SearchFragment())
             }
 
             R.id.btn_home -> {
-                selectedMenu = Constants.MENU_HOME
+                selectedMenu = Constants.Menu.MENU_HOME
                 changeFragment(HomeFragment())
             }
 
             R.id.btn_tv -> {
-                selectedMenu = Constants.MENU_TV
+                selectedMenu = Constants.Menu.MENU_TV
                 changeFragment(TvShowFragment())
             }
 
             R.id.btn_movies -> {
-                selectedMenu = Constants.MENU_MOVIE
+                selectedMenu = Constants.Menu.MENU_MOVIE
                 changeFragment(MoviesFragment())
             }
 
             R.id.btn_sports -> {
-                selectedMenu = Constants.MENU_SPORTS
+                selectedMenu = Constants.Menu.MENU_SPORTS
                 changeFragment(SportsFragment())
             }
 
             R.id.btn_settings -> {
-                selectedMenu = Constants.MENU_SETTINGS
+                selectedMenu = Constants.Menu.MENU_SETTINGS
                 changeFragment(SettingsFragment())
             }
 
             R.id.btn_language -> {
-                selectedMenu = Constants.MENU_LANGUAGE
+                selectedMenu = Constants.Menu.MENU_LANGUAGE
                 changeFragment(LanguageFragment())
             }
 
             R.id.btn_genre -> {
-                selectedMenu = Constants.MENU_GENRES
+                selectedMenu = Constants.Menu.MENU_GENRES
                 changeFragment(GenresFragment())
             }
         }
@@ -158,35 +158,35 @@ class MainActivity : FragmentActivity(), View.OnKeyListener, View.OnClickListene
 
     private fun switchToLastSelectedMenu() {
         when (selectedMenu) {
-            Constants.MENU_SEARCH -> {
+            Constants.Menu.MENU_SEARCH -> {
                 binding.btnSearch.requestFocus()
             }
 
-            Constants.MENU_HOME -> {
+            Constants.Menu.MENU_HOME -> {
                 binding.btnHome.requestFocus()
             }
 
-            Constants.MENU_TV -> {
+            Constants.Menu.MENU_TV -> {
                 binding.btnTv.requestFocus()
             }
 
-            Constants.MENU_MOVIE -> {
+            Constants.Menu.MENU_MOVIE -> {
                 binding.btnMovies.requestFocus()
             }
 
-            Constants.MENU_SPORTS -> {
+            Constants.Menu.MENU_SPORTS -> {
                 binding.btnSports.requestFocus()
             }
 
-            Constants.MENU_LANGUAGE -> {
+            Constants.Menu.MENU_LANGUAGE -> {
                 binding.btnLanguage.requestFocus()
             }
 
-            Constants.MENU_GENRES -> {
+            Constants.Menu.MENU_GENRES -> {
                 binding.btnGenre.requestFocus()
             }
 
-            Constants.MENU_SETTINGS -> {
+            Constants.Menu.MENU_SETTINGS -> {
                 binding.btnSettings.requestFocus()
             }
         }

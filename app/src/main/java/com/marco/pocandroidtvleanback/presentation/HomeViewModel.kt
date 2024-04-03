@@ -5,10 +5,7 @@ import com.marco.pocandroidtvleanback.domain.interactor.movies.GetNowPlayingMovi
 import com.marco.pocandroidtvleanback.domain.interactor.movies.GetPopularMoviesUseCase
 import com.marco.pocandroidtvleanback.domain.interactor.movies.GetTopRatedMoviesUseCase
 import com.marco.pocandroidtvleanback.domain.interactor.movies.GetUpcomingMoviesUseCase
-import com.marco.pocandroidtvleanback.domain.model.movies.NowPlaying
-import com.marco.pocandroidtvleanback.domain.model.movies.Popular
-import com.marco.pocandroidtvleanback.domain.model.movies.TopRated
-import com.marco.pocandroidtvleanback.domain.model.movies.Upcoming
+import com.marco.pocandroidtvleanback.domain.model.movies.Movies
 import com.marco.pocandroidtvleanback.utils.asLiveData
 import com.marco.pocandroidtvleanback.utils.postError
 import com.marco.pocandroidtvleanback.utils.postNeutral
@@ -24,16 +21,16 @@ class HomeViewModel : ViewModel(), KoinComponent {
     private val getTopRatedMoviesUseCase: GetTopRatedMoviesUseCase by useCase()
     private val getUpcomingMoviesUseCase: GetUpcomingMoviesUseCase by useCase()
 
-    private val _getNowPlayingMoviesViewState by viewState<NowPlaying>()
+    private val _getNowPlayingMoviesViewState by viewState<Movies>()
     val getNowPlayingMoviesViewState = _getNowPlayingMoviesViewState.asLiveData()
 
-    private val _getPopularMoviesViewState by viewState<Popular>()
+    private val _getPopularMoviesViewState by viewState<Movies>()
     val getPopularMoviesViewState = _getPopularMoviesViewState.asLiveData()
 
-    private val _getTopRatedMoviesViewState by viewState<TopRated>()
+    private val _getTopRatedMoviesViewState by viewState<Movies>()
     val getTopRatedMoviesViewState = _getTopRatedMoviesViewState.asLiveData()
 
-    private val _getUpcomingMoviesViewState by viewState<Upcoming>()
+    private val _getUpcomingMoviesViewState by viewState<Movies>()
     val getUpcomingMoviesViewState = _getUpcomingMoviesViewState.asLiveData()
 
     fun getNowPlayingMovies() {

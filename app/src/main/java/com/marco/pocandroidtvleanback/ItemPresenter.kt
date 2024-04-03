@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.leanback.widget.Presenter
 import com.bumptech.glide.Glide
+import com.marco.pocandroidtvleanback.domain.model.movies.Result
 
 class ItemPresenter : Presenter() {
     override fun onCreateViewHolder(parent: ViewGroup?): ViewHolder {
@@ -33,16 +34,14 @@ class ItemPresenter : Presenter() {
 
 
     override fun onBindViewHolder(viewHolder: ViewHolder?, item: Any?) {
+        val content = item as? Result
+        val imageview = viewHolder?.view?.findViewById<ImageView>(R.id.poster_image)
 
-//        val content = item as? DataModel.Result.Detail
-//
-//        val imageview = viewHolder?.view?.findViewById<ImageView>(R.id.poster_image)
-//
-//        val url = "https://www.themoviedb.org/t/p/w500" + content?.poster_path
-//        Glide.with(viewHolder?.view?.context!!)
-//            .load(url)
-//            .into(imageview!!)
+        val url = "https://www.themoviedb.org/t/p/w500" + content?.posterPath
 
+        Glide.with(viewHolder?.view?.context!!)
+            .load(url)
+            .into(imageview!!)
     }
 
     override fun onUnbindViewHolder(viewHolder: ViewHolder?) {

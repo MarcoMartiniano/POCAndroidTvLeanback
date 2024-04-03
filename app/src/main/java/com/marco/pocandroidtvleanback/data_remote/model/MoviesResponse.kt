@@ -2,7 +2,7 @@ package com.marco.pocandroidtvleanback.data_remote.model
 
 import com.google.gson.annotations.SerializedName
 
-data class NowPlayingResponse(
+data class MoviesResponse(
     @SerializedName("dates") val dates: DatesResponse? = null,
     @SerializedName("page") val page: Int? = null,
     @SerializedName("results") val results: List<ResultResponse>? = null,

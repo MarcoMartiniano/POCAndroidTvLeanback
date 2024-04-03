@@ -1,13 +1,10 @@
 package com.marco.pocandroidtvleanback.data.repository
 
-import com.marco.pocandroidtvleanback.domain.model.movies.NowPlaying
-import com.marco.pocandroidtvleanback.domain.model.movies.Popular
-import com.marco.pocandroidtvleanback.domain.model.movies.TopRated
-import com.marco.pocandroidtvleanback.domain.model.movies.Upcoming
+import com.marco.pocandroidtvleanback.domain.model.movies.Movies
 
 interface IMovieDataSource {
-    suspend fun getNowPlayingMovies(): NowPlaying
-    suspend fun getPopularMovies(): Popular
-    suspend fun getTopRatedMovies(): TopRated
-    suspend fun getUpcomingMovies(): Upcoming
+    suspend fun getNowPlayingMovies(): Movies
+    suspend fun getPopularMovies(): Movies
+    suspend fun getTopRatedMovies(): Movies
+    suspend fun getUpcomingMovies(): Movies
 }
