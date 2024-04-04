@@ -1,4 +1,4 @@
-package com.marco.pocandroidtvleanback.utils
+package com.marco.pocandroidtvleanback.core.commons.extensions
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

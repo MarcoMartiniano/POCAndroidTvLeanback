@@ -1,4 +1,4 @@
-package com.marco.pocandroidtvleanback
+package com.marco.pocandroidtvleanback.ui.home
 
 import android.os.Bundle
 import android.view.View
@@ -8,17 +8,20 @@ import androidx.leanback.widget.FocusHighlight
 import androidx.leanback.widget.HeaderItem
 import androidx.leanback.widget.ListRow
 import androidx.leanback.widget.ListRowPresenter
+import androidx.leanback.widget.OnItemViewClickedListener
 import androidx.leanback.widget.OnItemViewSelectedListener
 import androidx.leanback.widget.Presenter
 import androidx.leanback.widget.Row
 import androidx.leanback.widget.RowPresenter
 import com.marco.pocandroidtvleanback.domain.model.movies.Movies
-import com.marco.pocandroidtvleanback.utils.Constants
+import com.marco.pocandroidtvleanback.domain.model.movies.Result
+import com.marco.pocandroidtvleanback.domain.utils.Constants
 
 
-class ListFragment : RowsSupportFragment() {
+class HomeMovieListFragment : RowsSupportFragment() {
+    private var itemSelectedListener: ((Result) -> Unit)? = null
+    private var itemClickListener: ((Result) -> Unit)? = null
 
-    private var itemSelectedListener: ((DataModel.Result.Detail) -> Unit)? = null
     private var rootAdapter: ArrayObjectAdapter =
         ArrayObjectAdapter(ListRowPresenter(FocusHighlight.ZOOM_FACTOR_MEDIUM))
 
@@ -26,6 +29,12 @@ class ListFragment : RowsSupportFragment() {
         super.onViewCreated(view, savedInstanceState)
         adapter = rootAdapter
         onItemViewSelectedListener = ItemViewSelectedListener()
+        onItemViewClickedListener = ItemViewClickListener()
+
+        addEmptyListRow()
+    }
+
+    private fun addEmptyListRow() {
         val nowPlayingListRow = createListRow(null, Constants.Movies.NOW_PLAYING)
         val popularListRow = createListRow(null, Constants.Movies.POPULAR)
         val topRatedListRow = createListRow(null, Constants.Movies.TOP_RATED)
@@ -61,8 +70,12 @@ class ListFragment : RowsSupportFragment() {
         rootAdapter.replace(replaceIndex, listRow)
     }
 
-    fun setOnContentSelectedListener(listener: (DataModel.Result.Detail) -> Unit) {
+    fun setOnContentSelectedListener(listener: (Result) -> Unit) {
         this.itemSelectedListener = listener
+    }
+
+    fun setOnItemClickListener(listener: (Result) -> Unit) {
+        this.itemClickListener = listener
     }
 
     inner class ItemViewSelectedListener : OnItemViewSelectedListener {
@@ -72,8 +85,21 @@ class ListFragment : RowsSupportFragment() {
             rowViewHolder: RowPresenter.ViewHolder?,
             row: Row?,
         ) {
-            if (item is DataModel.Result.Detail) {
+            if (item is Result) {
                 itemSelectedListener?.invoke(item)
+            }
+        }
+    }
+
+    inner class ItemViewClickListener : OnItemViewClickedListener {
+        override fun onItemClicked(
+            itemViewHolder: Presenter.ViewHolder?,
+            item: Any?,
+            rowViewHolder: RowPresenter.ViewHolder?,
+            row: Row?,
+        ) {
+            if (item is Result) {
+                itemClickListener?.invoke(item)
             }
         }
     }

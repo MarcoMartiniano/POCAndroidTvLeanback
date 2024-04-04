@@ -1,4 +1,4 @@
-package com.marco.pocandroidtvleanback.ui
+package com.marco.pocandroidtvleanback.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,21 +7,22 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
-import com.marco.pocandroidtvleanback.ListFragment
+import com.bumptech.glide.Glide
 import com.marco.pocandroidtvleanback.R
 import com.marco.pocandroidtvleanback.data_remote.exception.InvalidApiKeyException
 import com.marco.pocandroidtvleanback.databinding.FragmentHomeBinding
+import com.marco.pocandroidtvleanback.domain.model.movies.Result
 import com.marco.pocandroidtvleanback.presentation.HomeViewModel
-import com.marco.pocandroidtvleanback.utils.Constants
-import com.marco.pocandroidtvleanback.utils.isError
-import com.marco.pocandroidtvleanback.utils.isSuccess
-import com.marco.pocandroidtvleanback.utils.observeLiveData
-import com.marco.pocandroidtvleanback.utils.viewInflateBinding
+import com.marco.pocandroidtvleanback.domain.utils.Constants
+import com.marco.pocandroidtvleanback.core.commons.extensions.isError
+import com.marco.pocandroidtvleanback.core.commons.extensions.isSuccess
+import com.marco.pocandroidtvleanback.core.commons.extensions.observeLiveData
+import com.marco.pocandroidtvleanback.core.commons.utils.viewInflateBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
     private val binding by viewInflateBinding(FragmentHomeBinding::inflate)
-    private lateinit var listFragment: ListFragment
+    private lateinit var homeMovieListFragment: HomeMovieListFragment
 
     private val viewModel: HomeViewModel by viewModel()
     override fun onCreateView(
@@ -41,7 +42,7 @@ class HomeFragment : Fragment() {
         viewModel.getNowPlayingMoviesViewState.observeLiveData(owner, false) {
             when {
                 it.isSuccess() -> {
-                    listFragment.bindData(it.data, Constants.Movies.NOW_PLAYING)
+                    homeMovieListFragment.bindData(it.data, Constants.Movies.NOW_PLAYING)
                 }
 
                 it.isError() -> {
@@ -69,7 +70,7 @@ class HomeFragment : Fragment() {
         viewModel.getPopularMoviesViewState.observeLiveData(owner, false) {
             when {
                 it.isSuccess() -> {
-                    listFragment.bindData(it.data, Constants.Movies.POPULAR)
+                    homeMovieListFragment.bindData(it.data, Constants.Movies.POPULAR)
                 }
 
                 it.isError() -> {
@@ -97,7 +98,7 @@ class HomeFragment : Fragment() {
         viewModel.getTopRatedMoviesViewState.observeLiveData(owner, false) {
             when {
                 it.isSuccess() -> {
-                    listFragment.bindData(it.data, Constants.Movies.TOP_RATED)
+                    homeMovieListFragment.bindData(it.data, Constants.Movies.TOP_RATED)
                 }
 
                 it.isError() -> {
@@ -125,7 +126,7 @@ class HomeFragment : Fragment() {
         viewModel.getUpcomingMoviesViewState.observeLiveData(owner, false) {
             when {
                 it.isSuccess() -> {
-                    listFragment.bindData(it.data, Constants.Movies.UPCOMING)
+                    homeMovieListFragment.bindData(it.data, Constants.Movies.UPCOMING)
                 }
 
                 it.isError() -> {
@@ -152,15 +153,29 @@ class HomeFragment : Fragment() {
     }
 
     private fun init() {
-        listFragment = ListFragment()
+        homeMovieListFragment = HomeMovieListFragment()
         val transaction = childFragmentManager.beginTransaction()
-        transaction.add(R.id.list_fragment, listFragment)
+        transaction.add(R.id.list_fragment, homeMovieListFragment)
         transaction.commit()
+
+        homeMovieListFragment.setOnContentSelectedListener { result ->
+            updateBanner(result)
+        }
+        homeMovieListFragment.setOnItemClickListener {
+            Toast.makeText(requireContext(), "OnClick ${it.title}", Toast.LENGTH_SHORT).show()
+        }
 
         viewModel.getNowPlayingMovies()
         viewModel.getPopularMovies()
         viewModel.getTopRatedMovies()
         viewModel.getUpcomingMovies()
+    }
+
+    private fun updateBanner(dataList: Result) {
+        binding.title.text = dataList.title
+        binding.description.text = dataList.overview
+        val url = Constants.BaseImageUrl + dataList.backdropPath
+        Glide.with(this).load(url).into(binding.ivBanner)
     }
 
     override fun onDestroyView() {

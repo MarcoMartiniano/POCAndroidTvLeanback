@@ -1,10 +1,10 @@
 package com.marco.pocandroidtvleanback
 
 import android.app.Application
-import com.marco.pocandroidtvleanback.di.dataModule
-import com.marco.pocandroidtvleanback.di.dataRemoteModule
-import com.marco.pocandroidtvleanback.di.presentationModule
-import com.marco.pocandroidtvleanback.di.useCaseModule
+import com.marco.pocandroidtvleanback.core.di.dataModule
+import com.marco.pocandroidtvleanback.core.di.dataRemoteModule
+import com.marco.pocandroidtvleanback.core.di.presentationModule
+import com.marco.pocandroidtvleanback.core.di.useCaseModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

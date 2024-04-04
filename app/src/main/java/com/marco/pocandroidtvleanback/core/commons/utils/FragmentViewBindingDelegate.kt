@@ -1,4 +1,4 @@
-package com.marco.pocandroidtvleanback.utils
+package com.marco.pocandroidtvleanback.core.commons.utils
 
 import android.view.LayoutInflater
 import android.view.View

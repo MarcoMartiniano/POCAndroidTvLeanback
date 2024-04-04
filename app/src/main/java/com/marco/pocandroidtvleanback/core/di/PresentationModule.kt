@@ -1,4 +1,4 @@
-package com.marco.pocandroidtvleanback.di
+package com.marco.pocandroidtvleanback.core.di
 
 import com.marco.pocandroidtvleanback.presentation.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel

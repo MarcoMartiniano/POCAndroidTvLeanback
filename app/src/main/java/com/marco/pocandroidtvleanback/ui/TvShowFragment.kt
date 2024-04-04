@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.marco.pocandroidtvleanback.databinding.FragmentTvshowsBinding
-import com.marco.pocandroidtvleanback.utils.viewInflateBinding
+import com.marco.pocandroidtvleanback.core.commons.utils.viewInflateBinding
 
 class TvShowFragment : Fragment() {
     private val binding by viewInflateBinding(FragmentTvshowsBinding::inflate)

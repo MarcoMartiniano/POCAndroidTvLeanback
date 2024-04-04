@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.marco.pocandroidtvleanback.databinding.FragmentLanguageBinding
-import com.marco.pocandroidtvleanback.utils.viewInflateBinding
+import com.marco.pocandroidtvleanback.core.commons.utils.viewInflateBinding
 
 class LanguageFragment : Fragment() {
     private val binding by viewInflateBinding(FragmentLanguageBinding::inflate)

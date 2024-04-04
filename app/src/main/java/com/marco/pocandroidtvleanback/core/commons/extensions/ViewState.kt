@@ -1,4 +1,4 @@
-package com.marco.pocandroidtvleanback.utils
+package com.marco.pocandroidtvleanback.core.commons.extensions
 
 class ViewState<T>(
     val status: Status = Status.NEUTRAL,

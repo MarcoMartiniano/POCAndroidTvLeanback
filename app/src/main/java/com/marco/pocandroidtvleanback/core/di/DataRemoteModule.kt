@@ -1,8 +1,9 @@
-package com.marco.pocandroidtvleanback.di
+package com.marco.pocandroidtvleanback.core.di
 
 import com.marco.pocandroidtvleanback.data.repository.IMovieDataSource
 import com.marco.pocandroidtvleanback.data_remote.datasource.MovieDataSourceImpl
 import com.marco.pocandroidtvleanback.data_remote.service.MovieService
+import com.marco.pocandroidtvleanback.data_remote.utils.ServiceConstants
 import com.marco.pocandroidtvleanback.data_remote.utils.WebServiceFactory
 import org.koin.dsl.module
 
@@ -18,7 +19,7 @@ val dataRemoteModule = module {
     single<MovieService> {
         WebServiceFactory.createWebService(
             okHttpClient = get(),
-            url = "https://api.themoviedb.org/3/"
+            url = ServiceConstants.BASE_MOVIES_URL
         )
     }
 }

@@ -1,6 +1,7 @@
-package com.marco.pocandroidtvleanback.utils
+package com.marco.pocandroidtvleanback.domain.utils
 
 object Constants {
+    const val BaseImageUrl = "https://www.themoviedb.org/t/p/w780"
 
     object Menu {
         const val MENU_SEARCH = "search"
@@ -12,14 +13,6 @@ object Constants {
         const val MENU_GENRES = "genres"
         const val MENU_SETTINGS = "settings"
     }
-
-
-    /* Intent tags*/
-    const val INTENT_MENU = "menu"
-    const val SELECTED_ID = "id"
-
-
-    const val API_KEY = "Paste Your Key Here"
 
     object Movies {
         const val NOW_PLAYING = "Now Playing"

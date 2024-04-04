@@ -19,10 +19,6 @@ class AuthInterceptor : Interceptor {
     @Synchronized
     fun addingHeaders(builder: Request.Builder) {
         builder.header("accept", "application/json")
-        builder.header("Authorization", API_KEY)
-    }
-
-    companion object {
-        const val API_KEY = "Insert your ApiKey here"
+        builder.header("Authorization", ServiceConstants.API_KEY)
     }
 }

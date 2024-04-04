@@ -1,8 +1,9 @@
-package com.marco.pocandroidtvleanback.utils
+package com.marco.pocandroidtvleanback.core.commons.utils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
+import com.marco.pocandroidtvleanback.core.commons.extensions.ViewState
 import kotlinx.coroutines.flow.Flow
 
 class EventLiveData<T> : MutableLiveData<T>() {

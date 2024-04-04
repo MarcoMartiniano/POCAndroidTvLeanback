@@ -11,15 +11,15 @@ import androidx.fragment.app.FragmentActivity
 import androidx.leanback.widget.BrowseFrameLayout
 import com.marco.pocandroidtvleanback.databinding.ActivityMainBinding
 import com.marco.pocandroidtvleanback.ui.GenresFragment
-import com.marco.pocandroidtvleanback.ui.HomeFragment
+import com.marco.pocandroidtvleanback.ui.home.HomeFragment
 import com.marco.pocandroidtvleanback.ui.LanguageFragment
 import com.marco.pocandroidtvleanback.ui.MoviesFragment
 import com.marco.pocandroidtvleanback.ui.SearchFragment
 import com.marco.pocandroidtvleanback.ui.SettingsFragment
 import com.marco.pocandroidtvleanback.ui.SportsFragment
 import com.marco.pocandroidtvleanback.ui.TvShowFragment
-import com.marco.pocandroidtvleanback.utils.Common
-import com.marco.pocandroidtvleanback.utils.Constants
+import com.marco.pocandroidtvleanback.core.commons.utils.DisplayUtils
+import com.marco.pocandroidtvleanback.domain.utils.Constants
 
 class MainActivity : FragmentActivity(), View.OnKeyListener, View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
@@ -197,12 +197,12 @@ class MainActivity : FragmentActivity(), View.OnKeyListener, View.OnClickListene
         navBar.startAnimation(animSlide)
 
         navBar.requestLayout()
-        navBar.layoutParams.width = Common.getWidthInPercent(this, 16)
+        navBar.layoutParams.width = DisplayUtils.getWidthInPercent(this, 16)
     }
 
     private fun closeMenu() {
         navBar.requestLayout()
-        navBar.layoutParams.width = Common.getWidthInPercent(this, 5)
+        navBar.layoutParams.width = DisplayUtils.getWidthInPercent(this, 5)
 
         fragmentContainer.requestFocus()
     }

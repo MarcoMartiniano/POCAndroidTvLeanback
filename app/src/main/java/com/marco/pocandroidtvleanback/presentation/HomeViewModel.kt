@@ -1,17 +1,17 @@
 package com.marco.pocandroidtvleanback.presentation
 
 import androidx.lifecycle.ViewModel
+import com.marco.pocandroidtvleanback.core.commons.extensions.asLiveData
+import com.marco.pocandroidtvleanback.core.commons.extensions.postError
+import com.marco.pocandroidtvleanback.core.commons.extensions.postNeutral
+import com.marco.pocandroidtvleanback.core.commons.extensions.postSuccess
+import com.marco.pocandroidtvleanback.core.commons.extensions.useCase
+import com.marco.pocandroidtvleanback.core.commons.extensions.viewState
 import com.marco.pocandroidtvleanback.domain.interactor.movies.GetNowPlayingMoviesUseCase
 import com.marco.pocandroidtvleanback.domain.interactor.movies.GetPopularMoviesUseCase
 import com.marco.pocandroidtvleanback.domain.interactor.movies.GetTopRatedMoviesUseCase
 import com.marco.pocandroidtvleanback.domain.interactor.movies.GetUpcomingMoviesUseCase
 import com.marco.pocandroidtvleanback.domain.model.movies.Movies
-import com.marco.pocandroidtvleanback.utils.asLiveData
-import com.marco.pocandroidtvleanback.utils.postError
-import com.marco.pocandroidtvleanback.utils.postNeutral
-import com.marco.pocandroidtvleanback.utils.postSuccess
-import com.marco.pocandroidtvleanback.utils.useCase
-import com.marco.pocandroidtvleanback.utils.viewState
 import org.koin.core.component.KoinComponent
 
 class HomeViewModel : ViewModel(), KoinComponent {

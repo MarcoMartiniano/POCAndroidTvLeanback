@@ -1,12 +1,13 @@
-package com.marco.pocandroidtvleanback.utils
+package com.marco.pocandroidtvleanback.core.commons.extensions
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.marco.pocandroidtvleanback.utils.ViewState.Status.ERROR
-import com.marco.pocandroidtvleanback.utils.ViewState.Status.LOADING
-import com.marco.pocandroidtvleanback.utils.ViewState.Status.SUCCESS
+import com.marco.pocandroidtvleanback.core.commons.extensions.ViewState.Status.ERROR
+import com.marco.pocandroidtvleanback.core.commons.extensions.ViewState.Status.LOADING
+import com.marco.pocandroidtvleanback.core.commons.extensions.ViewState.Status.SUCCESS
+import com.marco.pocandroidtvleanback.core.commons.utils.EventLiveData
 
 fun <T> viewState() = lazy {
     MutableLiveData<ViewState<T>>()

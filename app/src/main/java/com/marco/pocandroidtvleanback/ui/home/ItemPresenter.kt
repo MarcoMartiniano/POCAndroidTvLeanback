@@ -1,4 +1,4 @@
-package com.marco.pocandroidtvleanback
+package com.marco.pocandroidtvleanback.ui.home
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.leanback.widget.Presenter
 import com.bumptech.glide.Glide
+import com.marco.pocandroidtvleanback.R
 import com.marco.pocandroidtvleanback.domain.model.movies.Result
 
 class ItemPresenter : Presenter() {
